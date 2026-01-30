@@ -25,7 +25,7 @@ time=$(echo $out | grep -Po "$expr_time")
 ploss=$(echo $out | grep -Po "$expr_ploss")
 bits=$(($received * $psize * 8))
 speed=$(echo "$bits / ($time - ($inter * ($count - 1)))" | bc -l) # bits/ms
-MBps=$(echo "$speed / 1024 * 1000" | bc -l)
+KBps=$(echo "($speed * 1000) / 8 / 1024" | bc -l)
 
 echo $out
 echo "Trasmitted: $transmitted"
@@ -34,4 +34,4 @@ echo "Time: $time"
 echo "Packet Loss: $ploss"
 echo "Bits: $bits"
 echo "Speed: $speed"
-echo "MBps: $MBps"
+echo "KBps: $KBps"
