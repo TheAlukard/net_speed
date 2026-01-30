@@ -29,7 +29,6 @@ speed=$(echo "$bits / $realtime" | bc -l) # bits/ms
 KBps=$(echo "($speed * 1000) / 8 / 1024" | bc -l)
 MBps=$(echo "$KBps / 1024" | bc -l)
 
-echo $out
 echo "Trasmitted: $transmitted"
 echo "Received: $received"
 echo "Time: $time"
