@@ -23,13 +23,15 @@ transmitted=$(echo $out | grep -Po "$expr_transmitted")
 received=$(echo $out | grep -Po "$expr_received")
 time=$(echo $out | grep -Po "$expr_time")
 ploss=$(echo $out | grep -Po "$expr_ploss")
-speed=$(echo "($received * $psize * 8) / ($time - ($inter * ($count - 1)))" | bc -l)
-MBps=$(echo "$speed * 1000 / 1024" | bc -l)
+bits=$(($received * $psize * 8))
+speed=$(echo "$bits / ($time - ($inter * ($count - 1)))" | bc -l)
+MBps=$(echo "$speed / 1024 * 1000" | bc -l)
 
 echo $out
 echo "Trasmitted: $transmitted"
 echo "Received: $received"
 echo "Time: $time"
 echo "Packet Loss: $ploss"
+echo "Bits: $bits"
 echo "Speed: $speed"
 echo "MBps: $MBps"
