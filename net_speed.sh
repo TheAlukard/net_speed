@@ -19,5 +19,3 @@ out=$(ping -3 -f -i $INTERVAL -s $PACKET_SIZE -c $count $addr)
 
 transmitted=$(echo $out | grep -Po "$expr_transmitted")
 received=$(echo $out | grep -Po "$expr_received")
-
-
