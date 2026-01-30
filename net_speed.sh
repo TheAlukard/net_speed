@@ -24,7 +24,7 @@ received=$(echo $out | grep -Po "$expr_received")
 time=$(echo $out | grep -Po "$expr_time")
 ploss=$(echo $out | grep -Po "$expr_ploss")
 bits=$(($received * $psize * 8))
-speed=$(echo "$bits / ($time - ($inter * ($count - 1)))" | bc -l)
+speed=$(echo "$bits / ($time - ($inter * ($count - 1)))" | bc -l) # bits/ms
 MBps=$(echo "$speed / 1024 * 1000" | bc -l)
 
 echo $out
