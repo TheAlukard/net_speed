@@ -26,7 +26,9 @@ ploss=$(echo $out | grep -Po "$expr_ploss")
 bits=$(($received * $psize * 8))
 realtime=$(echo "($time - ($inter * ($count - 1))) / $count" | bc -l)
 speed=$(echo "$bits / $realtime" | bc -l) # bits/ms
+Kbps=$(echo "($speed * 1000) / 1024" | bc -l)
 KBps=$(echo "($speed * 1000) / 8 / 1024" | bc -l)
+Mbps=$(echo "$Kbps / 1024" | bc -l)
 MBps=$(echo "$KBps / 1024" | bc -l)
 
 echo "Trasmitted: $transmitted"
@@ -36,5 +38,5 @@ echo "Real Time": $realtime
 echo "Packet Loss: $ploss"
 echo "Bits: $bits"
 echo "Speed: $speed"
-echo "KBps: $KBps"
+echo "Mbps: $Mbps"
 echo "MBps: $MBps"
