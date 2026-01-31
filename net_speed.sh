@@ -37,6 +37,6 @@ echo "Time: $time"
 echo "Real Time": $realtime
 echo "Packet Loss: $ploss"
 echo "Bits: $bits"
-echo "Speed: $speed"
+echo "Speed (bits/second): $speed"
 echo "Mbps: $Mbps"
 echo "MBps: $MBps"
